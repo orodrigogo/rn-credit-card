@@ -8,6 +8,16 @@ export const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    marginTop: 32,
+    marginVertical: 32,
+  },
+  form: {
+    gap: 12,
+  },
+  inputInLine: {
+    flexDirection: "row",
+    gap: 12,
+  },
+  inputSmall: {
+    width: 74,
   },
 })

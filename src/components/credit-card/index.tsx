@@ -15,9 +15,15 @@ export enum CARD_SIDE {
 
 type CreditCardProps = {
   cardSide: SharedValue<number>
+  data: {
+    name: string
+    number: string
+    date: string
+    code: string
+  }
 }
 
-export function CreditCard({ cardSide }: CreditCardProps) {
+export function CreditCard({ cardSide, data }: CreditCardProps) {
   const frontAnimatedStyles = useAnimatedStyle(() => {
     const rotateValue = interpolate(
       cardSide.value,
@@ -59,7 +65,7 @@ export function CreditCard({ cardSide }: CreditCardProps) {
         </View>
 
         <View style={styles.footer}>
-          <Text style={styles.name}>Rodrigo Gonçalves</Text>
+          <Text style={styles.name}>{data.name}</Text>
 
           <View style={styles.flag}>
             <View style={[styles.circle, styles.red]} />
@@ -71,18 +77,18 @@ export function CreditCard({ cardSide }: CreditCardProps) {
       <Animated.View style={[styles.card, styles.back, backAnimatedStyles]}>
         <View>
           <Text style={styles.label}>Número do cartão</Text>
-          <Text style={styles.value}>1234 5678 9012 3456</Text>
+          <Text style={styles.value}>{data.number}</Text>
         </View>
 
         <View style={styles.footer}>
           <View>
             <Text style={styles.label}>Validade</Text>
-            <Text style={styles.value}>01/02</Text>
+            <Text style={styles.value}>{data.date}</Text>
           </View>
 
           <View>
             <Text style={styles.label}>CVV</Text>
-            <Text style={styles.value}>123</Text>
+            <Text style={styles.value}>{data.code}</Text>
           </View>
         </View>
       </Animated.View>
