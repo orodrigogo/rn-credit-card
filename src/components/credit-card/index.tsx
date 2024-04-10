@@ -1,5 +1,6 @@
 import { View, Text } from "react-native"
 
+import { styles } from "./styles"
 import Animated, {
   SharedValue,
   interpolate,
@@ -15,8 +16,6 @@ export enum CARD_SIDE {
 type CreditCardProps = {
   cardSide: SharedValue<number>
 }
-
-import { styles } from "./styles"
 
 export function CreditCard({ cardSide }: CreditCardProps) {
   const frontAnimatedStyles = useAnimatedStyle(() => {
