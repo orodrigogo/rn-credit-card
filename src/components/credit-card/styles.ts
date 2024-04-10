@@ -8,8 +8,17 @@ export const styles = StyleSheet.create({
     padding: 24,
     justifyContent: "space-between",
   },
-  front: { backgroundColor: "#DAE1E7" },
-  back: { backgroundColor: "#BAC1C7" },
+  front: {
+    width: "100%",
+    position: "absolute",
+    backfaceVisibility: "hidden",
+    backgroundColor: "#DAE1E7",
+  },
+  back: {
+    width: "100%",
+    backfaceVisibility: "hidden",
+    backgroundColor: "#BAC1C7",
+  },
   header: {
     flexDirection: "row",
     alignItems: "center",
