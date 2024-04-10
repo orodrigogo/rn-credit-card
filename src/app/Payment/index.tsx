@@ -1,33 +1,33 @@
-import { useState } from "react"
-import { View, Button } from "react-native"
+import { View, Text, TouchableOpacity } from "react-native"
+
 import Animated, {
+  withTiming,
   interpolate,
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
 } from "react-native-reanimated"
 
 import { styles } from "./styles"
 
 import { CreditCard } from "@/components/credit-card"
 
-enum CARD_VIEW {
+enum CARD_SIDE {
   front = 0,
   back = 1,
 }
 
 export function Payment() {
-  const rotate = useSharedValue(CARD_VIEW.front)
+  const cardSide = useSharedValue(CARD_SIDE.front)
 
   function handleFlipCard() {
-    rotate.value =
-      rotate.value === CARD_VIEW.back ? CARD_VIEW.front : CARD_VIEW.back
+    cardSide.value =
+      cardSide.value === CARD_SIDE.back ? CARD_SIDE.front : CARD_SIDE.back
   }
 
   const frontAnimatedStyles = useAnimatedStyle(() => {
     const rotateValue = interpolate(
-      rotate.value,
-      [CARD_VIEW.front, CARD_VIEW.back],
+      cardSide.value,
+      [CARD_SIDE.front, CARD_SIDE.back],
       [0, 180]
     )
 
@@ -39,10 +39,11 @@ export function Payment() {
       ],
     }
   })
+
   const backAnimatedStyles = useAnimatedStyle(() => {
     const rotateValue = interpolate(
-      rotate.value,
-      [CARD_VIEW.front, CARD_VIEW.back],
+      cardSide.value,
+      [CARD_SIDE.front, CARD_SIDE.back],
       [180, 360]
     )
 
@@ -67,7 +68,9 @@ export function Payment() {
         </Animated.View>
       </View>
 
-      <Button title="Inverter" onPress={handleFlipCard} />
+      <TouchableOpacity style={styles.button} onPress={handleFlipCard}>
+        <Text>Ver outro lado</Text>
+      </TouchableOpacity>
     </View>
   )
 }

@@ -15,4 +15,8 @@ export const styles = StyleSheet.create({
     width: "100%",
     backfaceVisibility: "hidden",
   },
+  button: {
+    alignItems: "center",
+    marginTop: 32,
+  },
 })
